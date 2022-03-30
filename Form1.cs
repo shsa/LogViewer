@@ -29,6 +29,8 @@ namespace LogViewer
         public Form1()
         {
             InitializeComponent();
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -99,7 +101,7 @@ namespace LogViewer
                             if (bytesRead == 0)
                                 break;
 
-                            text += ASCIIEncoding.ASCII.GetString(buffer, 0, bytesRead);
+                            text += Encoding.GetEncoding(1251).GetString(buffer, 0, bytesRead);
                         }
                     }
                     tbLogText.AppendText(text);
